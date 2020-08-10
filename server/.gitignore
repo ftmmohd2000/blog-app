@@ -1,0 +1,15 @@
+# dependencies
+node_modules/
+
+# transpiled code
+dist
+
+# secrets
+src/config
+
+# error logs
+*.error
+*.log
+
+# vscode generated files 
+.vscode
