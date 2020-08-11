@@ -1,5 +1,6 @@
 import { Field, ObjectType } from "type-graphql";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { User } from "./User";
 
 @ObjectType()
 @Entity("posts")
@@ -16,10 +17,7 @@ export class Post {
   @Field()
   content: string;
 
-  // @ManyToOne(() => User, (user) => user.posts)
-  // author: User;
-
-  @Column()
-  @Field()
-  authorId: string;
+  @Field(() => User)
+  @ManyToOne(() => User, (user) => user.posts, { eager: true })
+  author: User;
 }

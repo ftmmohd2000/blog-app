@@ -1,24 +1,16 @@
-import { Field, ID, ObjectType, Root } from "type-graphql";
-import {
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-  getCustomRepository
-} from "typeorm";
-import { PostRepository } from "../repositories/PostRepository";
+import { Field, ID, ObjectType } from "type-graphql";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Post } from "./Post";
 
 @ObjectType()
 @Entity("users")
 export class User {
-  postRepository: PostRepository = getCustomRepository(PostRepository);
-
   @Field(() => ID)
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Field(() => String)
-  @Column()
+  @Column("text", { unique: true })
   email: string;
 
   @Field(() => String)
@@ -36,8 +28,7 @@ export class User {
   @Column()
   confirmed: boolean;
 
-  @Field(() => [Post])
-  async posts(@Root() { id }: User) {
-    return this.postRepository.find({ where: { authorId: id } });
-  }
+  @Field(() => [Post], { nullable: true })
+  @OneToMany(() => Post, (post) => post.author)
+  posts: Promise<Post[]>;
 }

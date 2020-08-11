@@ -6,7 +6,5 @@ export interface MyContext {
   req: Request;
   res: Response;
   redis: Redis;
-  url: string;
   user: User | undefined;
-  sessionIDs: string[];
 }

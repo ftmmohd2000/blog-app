@@ -5,11 +5,11 @@ import { GraphQLServer } from "graphql-yoga";
 import RedisStore from "rate-limit-redis";
 import { buildSchema } from "type-graphql";
 import { customAuth } from "../auth/customAuth";
-import { redisSessionPrefix, userSessionPrefix } from "../constants";
-import { User } from "../entities/User";
+import { redisSessionPrefix } from "../constants";
 import resolvers from "../modules";
 import { createTypeormConn } from "../utils/createTypeormConn";
 import { redis } from "./redis";
+import { User } from "../entities/User";
 import { getCustomRepository } from "typeorm";
 import { UserRepository } from "../repositories/UserRepository";
 
@@ -26,34 +26,17 @@ export const startServer = async () => {
     context: async ({ request, response }) => {
       let user: User | undefined;
 
-      const userRepository = getCustomRepository(UserRepository);
+      const userRepo = getCustomRepository(UserRepository);
 
-      if (request.session) {
-        user = !!request.session.passport
-          ? // OAuth login
-            await userRepository.findById(request.session.passport.user)
-          : // manual login
-            await userRepository.findById(request.session!.userId);
-      }
-
-      let sessionIDs: string[];
-      if (user) {
-        sessionIDs = await redis.lrange(
-          `${userSessionPrefix}${user.id}`,
-          0,
-          -1
-        );
-      } else {
-        sessionIDs = [];
+      if (request.session!.userId) {
+        user = await userRepo.findById(request.session!.userId);
       }
 
       return {
-        redis,
-        url: request.protocol + "://" + request.get("host"),
         req: request,
         res: response,
-        user,
-        sessionIDs
+        redis,
+        user
       };
     }
   });

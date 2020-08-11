@@ -10,10 +10,7 @@ export class UserRepository extends Repository<User> {
     return user;
   }
 
-  async updateOne(
-    id: string,
-    updates: Partial<User>
-  ): Promise<User | undefined> {
+  async updateOne(id: string, updates: Partial<User>) {
     const allowedUpdates = ["firstName", "lastName", "password"];
 
     const validUpdates = Object.keys(updates).every(
@@ -30,13 +27,27 @@ export class UserRepository extends Repository<User> {
       return undefined;
     }
 
-    await super.update(id, updates);
+    if (updates.password) {
+      updates.password = await hash(updates.password, 12);
+    }
 
-    return super.findOne({ where: { id } });
+    await super.update(id, updates);
   }
 
-  async findById(id: string): Promise<User | undefined> {
-    return super.findOne({ where: { id } });
+  async findById(id: string, eager?: boolean): Promise<User | undefined> {
+    if (eager) {
+      return super.findOne({ where: { id }, relations: ["posts"] });
+    } else {
+      return super.findOne({ where: { id } });
+    }
+  }
+
+  async findByEmail(email: string, eager?: boolean): Promise<User | undefined> {
+    if (eager) {
+      return super.findOne({ where: { email }, relations: ["posts"] });
+    } else {
+      return super.findOne({ where: { email } });
+    }
   }
 
   async deleteOne(id: string): Promise<boolean> {
