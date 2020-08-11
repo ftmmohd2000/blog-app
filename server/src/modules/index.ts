@@ -6,7 +6,7 @@ const resolvers: any[] = [];
 const folders = readdirSync(__dirname);
 
 folders.forEach((folder) => {
-  if (folder === "index.ts") {
+  if (folder.startsWith("index")) {
     return;
   }
   const files = readdirSync(join(__dirname, folder));

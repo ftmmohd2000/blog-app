@@ -1,0 +1,50 @@
+version: "3"
+
+services:
+  client:
+    container_name: blog-client
+    build: ./client
+    ports:
+      - "3000:3000"
+    links:
+      - server
+    depends_on:
+      - server
+    networks:
+      - blog-app-network
+  server:
+    container_name: blog-server
+    build: ./server
+    ports:
+      - "4000:4000"
+    links:
+      - postgres
+      - redis
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - blog-app-network
+  postgres:
+    container_name: blog-pg-db
+    image: postgres:12
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=blog-app-prod
+    networks:
+      - blog-app-network
+  redis:
+    container_name: blog-redis
+    image: redis:6.0-alpine
+    command: redis-server --appendonly yes --port 6379
+    ports:
+      - "6379:6379"
+    networks:
+      - blog-app-network
+
+networks:
+  blog-app-network:
+    driver: bridge

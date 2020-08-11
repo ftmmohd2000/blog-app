@@ -13,3 +13,6 @@ src/config
 
 # vscode generated files 
 .vscode
+
+# db dump
+dump.rdb
