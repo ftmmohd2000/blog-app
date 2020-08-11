@@ -4,7 +4,7 @@ import { PostRepository } from "../../repositories/PostRepository";
 import { Post } from "../../entities/Post";
 
 @Resolver(Post)
-class FindPostsResolver {
+class RetrievePostsResolver {
   postRepo = getCustomRepository(PostRepository);
 
   @Query(() => Post)
@@ -18,4 +18,4 @@ class FindPostsResolver {
   }
 }
 
-export default FindPostsResolver;
+export default RetrievePostsResolver;

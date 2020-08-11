@@ -13,7 +13,7 @@ import { compare } from "bcryptjs";
 import { User } from "../../entities/User";
 
 @Resolver(User)
-class LogoutResolver {
+class LogActionsResolver {
   userRepository: UserRepository = getCustomRepository(UserRepository);
 
   @Mutation(() => String, { nullable: true })
@@ -85,4 +85,4 @@ class LogoutResolver {
   }
 }
 
-export default LogoutResolver;
+export default LogActionsResolver;

@@ -67,7 +67,9 @@ export const startServer = async () => {
       saveUninitialized: false,
       cookie: {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        // secure: process.env.NODE_ENV === "production",
+        // TODO make this secure if you buy a domain
+        secure: false,
         maxAge: 1000 * 60 * 60 * 24 * 7
       }
     })
