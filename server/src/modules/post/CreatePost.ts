@@ -1,27 +1,27 @@
-import { Resolver, Mutation, Authorized, Ctx, Arg } from "type-graphql";
+import { Resolver, Authorized, Mutation, Ctx, Arg } from "type-graphql";
+import { MyContext } from "../../types/Context";
+import { CreatePostInputType } from "./postActions/CreatePostInputType";
 import { Post } from "../../entities/Post";
 import Filter from "bad-words";
-import { MyContext } from "../../types/Context";
-import { PostInputType } from "./postActions/PostInputType";
-import { getCustomRepository } from "typeorm";
-import { PostRepository } from "../../repositories/PostRepository";
+import { GraphQLError } from "graphql";
 import {
   titleProfanityError,
   contentProfanityError
 } from "./postActions/errorMessages";
-import { GraphQLError } from "graphql";
+import { getCustomRepository } from "typeorm";
+import { PostRepository } from "../../repositories/PostRepository";
 import { success } from "../../constants";
 
 @Resolver(Post)
-class PostActionsResolver {
-  filter = new Filter();
+class CreatePostResolver {
   postRepo = getCustomRepository(PostRepository);
+  filter = new Filter();
 
   @Authorized()
   @Mutation(() => String, { nullable: true })
   async createPost(
     @Ctx() { user }: MyContext,
-    @Arg("postData") { title, content }: PostInputType
+    @Arg("postData") { title, content }: CreatePostInputType
   ) {
     const post = new Post();
     post.title = title;
@@ -44,4 +44,4 @@ class PostActionsResolver {
   }
 }
 
-export default PostActionsResolver;
+export default CreatePostResolver;

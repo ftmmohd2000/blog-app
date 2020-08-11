@@ -1,6 +1,6 @@
-import { Repository, EntityRepository } from "typeorm";
-import { User } from "../entities/User";
 import { hash } from "bcryptjs";
+import { EntityRepository, Repository } from "typeorm";
+import { User } from "../entities/User";
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
@@ -13,25 +13,26 @@ export class UserRepository extends Repository<User> {
   async updateOne(id: string, updates: Partial<User>) {
     const allowedUpdates = ["firstName", "lastName", "password"];
 
-    const validUpdates = Object.keys(updates).every(
-      (key) => key in allowedUpdates
+    const validUpdates = Object.keys(updates).every((key) =>
+      allowedUpdates.includes(key)
     );
 
     if (!validUpdates) {
-      return undefined;
+      return -1;
     }
 
     const user = await super.findOne({ where: { id } });
 
     if (!user) {
-      return undefined;
+      return -2;
     }
 
     if (updates.password) {
       updates.password = await hash(updates.password, 12);
     }
 
-    await super.update(id, updates);
+    await super.update({ id }, updates);
+    return 0;
   }
 
   async findById(id: string, eager?: boolean): Promise<User | undefined> {
@@ -50,13 +51,7 @@ export class UserRepository extends Repository<User> {
     }
   }
 
-  async deleteOne(id: string): Promise<boolean> {
-    const count = (await super.delete(id)).affected;
-
-    if (count) {
-      return count > 0;
-    } else {
-      return false;
-    }
+  async deleteOne(id: string) {
+    return !!(await super.delete(id)).affected;
   }
 }

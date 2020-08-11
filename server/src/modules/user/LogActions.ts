@@ -10,8 +10,9 @@ import { getCustomRepository } from "typeorm";
 import { GraphQLError } from "graphql";
 import { invalidCredentials, emailNotVerified } from "./login/errorMessages";
 import { compare } from "bcryptjs";
+import { User } from "../../entities/User";
 
-@Resolver()
+@Resolver(User)
 class LogoutResolver {
   userRepository: UserRepository = getCustomRepository(UserRepository);
 

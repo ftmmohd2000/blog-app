@@ -4,7 +4,7 @@ import { User } from "../../entities/User";
 import { getCustomRepository } from "typeorm";
 import { UserRepository } from "../../repositories/UserRepository";
 
-@Resolver()
+@Resolver(User)
 class MeResolver {
   userRepo = getCustomRepository(UserRepository);
 
