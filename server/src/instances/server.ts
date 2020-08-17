@@ -42,15 +42,17 @@ export const startServer = async () => {
   });
 
   // rate limit server
-  server.express.use(
-    RateLimit({
-      store: new RedisStore({
-        client: redis
-      }),
-      windowMs: 15 * 60 * 100,
-      max: 100
-    })
-  );
+  if (process.env.NODE_ENV === "production") {
+    server.express.use(
+      RateLimit({
+        store: new RedisStore({
+          client: redis
+        }),
+        windowMs: 15 * 60 * 100,
+        max: 100
+      })
+    );
+  }
 
   const redisStore = connectRedis(session);
 

@@ -20,4 +20,7 @@ export class Post {
   @Field(() => User)
   @ManyToOne(() => User, (user) => user.posts, { eager: true })
   author: User;
+
+  @Column()
+  authorId: string;
 }

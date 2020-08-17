@@ -1,9 +1,10 @@
-import { Resolver, Mutation, Authorized, Arg } from "type-graphql";
+import { Resolver, Mutation, Authorized, Arg, Ctx } from "type-graphql";
 import { GraphQLError } from "graphql";
 import { postNotFound } from "./postActions/errorMessages";
 import { getCustomRepository } from "typeorm";
 import { PostRepository } from "../../repositories/PostRepository";
 import { success } from "../../constants";
+import { MyContext } from "../../types/Context";
 
 @Resolver()
 class DeletePostResolver {
@@ -11,8 +12,8 @@ class DeletePostResolver {
 
   @Authorized()
   @Mutation(() => String, { nullable: true })
-  async deletePost(@Arg("id") id: string) {
-    const deleteSuccess = await this.postRepo.deleteOne(id);
+  async deletePost(@Ctx() { user }: MyContext, @Arg("id") id: string) {
+    const deleteSuccess = await this.postRepo.deleteOne(id, user!.id);
 
     if (!deleteSuccess) {
       throw new GraphQLError(postNotFound);

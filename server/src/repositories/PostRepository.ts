@@ -14,7 +14,7 @@ export class PostRepository extends Repository<Post> {
   }
 
   async findByAuthorId(authorId: string) {
-    return super.find({ where: { author: authorId } });
+    return super.find({ where: { authorId } });
   }
 
   async updateOne(id: string, updates: UpdatePostInputType): Promise<number> {
@@ -39,7 +39,15 @@ export class PostRepository extends Repository<Post> {
     return 0;
   }
 
-  async deleteOne(id: string) {
-    return !!(await super.delete({ id })).affected;
+  async deleteOne(id: string, authorId: string) {
+    const userPost = await super.findOne({
+      where: { authorId, id }
+    });
+    if (userPost) {
+      super.delete({ id });
+      return true;
+    } else {
+      return false;
+    }
   }
 }
