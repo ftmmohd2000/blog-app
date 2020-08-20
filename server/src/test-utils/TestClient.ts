@@ -63,6 +63,12 @@ const deletePostMutation = (id: string) => `
   }
 `;
 
+const voteMutation = (postId: string) => `
+  mutation {
+    vote(postId:"${postId}")
+  }
+`;
+
 const meQuery = () => `
   query {
     me {
@@ -74,6 +80,7 @@ const meQuery = () => `
         id
         title
         content
+        votes
       }
     }
   }
@@ -84,6 +91,7 @@ const postQuery = (postId: string) => `
     post(id:"${postId}"){
       title
       content
+      votes
       author{
         firstName
         lastName
@@ -98,6 +106,7 @@ const postsQuery = (authorId: string) => `
     posts(authorId:"${authorId}"){
       title
       content
+      votes
       author{
         firstName
         lastName
@@ -188,6 +197,15 @@ export class TestClient {
       ...this.options,
       body: {
         query: deletePostMutation(id)
+      }
+    });
+  }
+
+  async vote(postId: string) {
+    return rp.post(this.url, {
+      ...this.options,
+      body: {
+        query: voteMutation(postId)
       }
     });
   }

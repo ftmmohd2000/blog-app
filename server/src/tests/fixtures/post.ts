@@ -17,6 +17,7 @@ export const createFakePost = () => {
 
   return {
     title,
-    content
+    content,
+    votes: 0
   };
 };

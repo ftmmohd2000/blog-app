@@ -31,4 +31,7 @@ export class User {
   @Field(() => [Post], { nullable: true })
   @OneToMany(() => Post, (post) => post.author)
   posts: Promise<Post[]>;
+
+  @Column("text", { array: true, default: "{}" })
+  upvotedPosts: string[];
 }

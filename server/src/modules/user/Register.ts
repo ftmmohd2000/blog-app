@@ -1,11 +1,10 @@
 import { GraphQLError } from "graphql";
 import { Arg, Mutation, Resolver } from "type-graphql";
 import { getCustomRepository } from "typeorm";
+import { success } from "../../constants";
 import { User } from "../../entities/User";
 import { UserRepository } from "../../repositories/UserRepository";
 import { RegisterInputType } from "./register/RegisterInputType";
-import { duplicateEmailError } from "./register/errorMessages";
-import { success } from "../../constants";
 
 @Resolver(User)
 class RegisterResolver {
@@ -19,7 +18,7 @@ class RegisterResolver {
       await this.userRepository.saveOne(newUser);
       return success;
     } catch (error) {
-      throw new GraphQLError(duplicateEmailError);
+      throw new GraphQLError(error);
     }
   }
 }

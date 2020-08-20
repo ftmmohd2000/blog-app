@@ -1,5 +1,5 @@
 import { Field, ObjectType } from "type-graphql";
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./User";
 
 @ObjectType()
@@ -23,4 +23,8 @@ export class Post {
 
   @Column()
   authorId: string;
+
+  @Column("int", { default: 0 })
+  @Field()
+  votes: number;
 }
