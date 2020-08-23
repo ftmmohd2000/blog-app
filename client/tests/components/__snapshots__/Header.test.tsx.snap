@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Header correctly 1`] = `
+<div
+  className="jumbotron"
+>
+  <h1>
+    Blog app
+  </h1>
+  <h2>
+    Some Title
+  </h2>
+</div>
+`;
