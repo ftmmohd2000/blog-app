@@ -1,5 +1,5 @@
 import { loginAction, logoutAction } from "../../../redux/actions/user";
-import { createFakeUser } from "../../fixtures/user";
+import { createFakeUser } from "../fixtures/user";
 import { LOGIN_TYPE, LOGOUT_TYPE } from "../../../redux/constants";
 
 test("should return login action", () => {

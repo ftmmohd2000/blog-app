@@ -1,4 +1,4 @@
-import { createFakePosts, createFakePost } from "../../fixtures/post";
+import { createFakePosts, createFakePost } from "../fixtures/post";
 import {
   setPosts,
   addPost,

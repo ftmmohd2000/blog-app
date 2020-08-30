@@ -1,7 +1,7 @@
 import faker from "faker";
 import Filter from "bad-words";
 
-import { IPostData } from "../../redux/types";
+import { IPostData } from "../../../redux/types";
 
 export const createFakePosts = (count: number): IPostData[] => {
   const filter = new Filter();

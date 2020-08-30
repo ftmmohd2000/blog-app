@@ -1,5 +1,4 @@
 import { Connection } from "typeorm";
-import { success } from "../../../constants";
 import { TestClient } from "../../../test-utils/TestClient";
 import { createTypeormConn } from "../../../utils/createTypeormConn";
 import { createFakePost } from "../../fixtures/post";
@@ -35,7 +34,7 @@ test("should upvote and downvote post", async (done) => {
   const response2 = await client.vote(postId);
 
   expect(response2.data).toEqual({
-    vote: "1"
+    vote: 1
   });
 
   await client.logout();
@@ -43,11 +42,11 @@ test("should upvote and downvote post", async (done) => {
   await client.login(fakeUser2.email, fakeUser2.password);
   const response3 = await client.vote(postId);
 
-  expect(response3.data.vote).toBe("2");
+  expect(response3.data.vote).toBe(2);
 
   const response4 = await client.vote(postId);
 
-  expect(response4.data.vote).toBe("1");
+  expect(response4.data.vote).toBe(1);
 
   done();
 });

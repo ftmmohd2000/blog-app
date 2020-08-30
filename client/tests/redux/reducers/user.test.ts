@@ -2,7 +2,7 @@ import { loginAction, logoutAction } from "../../../redux/actions/user";
 import { INIT_TYPE } from "../../../redux/constants";
 import { initialUserState, userReducer } from "../../../redux/reducers/user";
 import { IInitAction } from "../../../redux/types";
-import { createFakeUser } from "../../fixtures/user";
+import { createFakeUser } from "../fixtures/user";
 
 test("should instantiate state", () => {
   const action: IInitAction = { type: INIT_TYPE };

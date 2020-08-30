@@ -1,6 +1,6 @@
 import { UserAction } from "../actions/user";
-import { IUserState } from "../types";
 import { LOGIN_TYPE, LOGOUT_TYPE } from "../constants";
+import { IUserState } from "../types";
 
 export const initialUserState: IUserState = {
   loggedIn: false,

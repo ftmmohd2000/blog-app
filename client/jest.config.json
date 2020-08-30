@@ -1,13 +1,11 @@
 {
   "moduleFileExtensions": ["ts", "tsx", "js"],
-  "modulePathIgnorePatterns": ["<rootDir>/tests/setupTests.ts"],
   "transform": {
     "\\.(ts|tsx)$": "ts-jest"
   },
   "setupFiles": ["raf/polyfill"],
   "testRegex": "/tests/.*\\.test.(ts|tsx|js)$",
   "setupFilesAfterEnv": ["<rootDir>tests/setupTests.ts"],
-  "snapshotSerializers": ["enzyme-to-json/serializer"],
   "globals": {
     "ts-jest": {
       "tsConfig": "<rootDir>/tsconfig.test.json"

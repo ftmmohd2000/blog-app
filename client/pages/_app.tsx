@@ -2,6 +2,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import React, { ComponentType } from "react";
 import { Provider } from "react-redux";
 import { getStore } from "../redux/store";
+import { ApolloProvider } from "@apollo/client";
+import { client } from "../apollo/client";
 
 const store = getStore();
 
@@ -13,9 +15,11 @@ export interface IAppProps {
 const MyApp = ({ Component, pageProps }: IAppProps) => {
   return (
     <div className="bg-danger">
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
+      <ApolloProvider client={client}>
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
+      </ApolloProvider>
     </div>
   );
 };

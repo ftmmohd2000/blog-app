@@ -1,13 +1,13 @@
 import React from "react";
-import { ShallowWrapper, shallow } from "enzyme";
-import { Layout } from "../../components/Layout";
+import { render, RenderResult } from "@testing-library/react";
+import { Layout } from "../../../components/shared/Layout";
 
-let wrapper: ShallowWrapper;
+let wrapper: RenderResult;
 let title: string;
 
 beforeEach(() => {
   title = "Some Title";
-  wrapper = shallow(
+  wrapper = render(
     <Layout pageTitle={title}>
       <p>content here</p>
     </Layout>

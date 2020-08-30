@@ -1,6 +1,6 @@
 import { postReducer, initialPostState } from "../../../redux/reducers/post";
 import { INIT_TYPE } from "../../../redux/constants";
-import { createFakePosts, createFakePost } from "../../fixtures/post";
+import { createFakePosts, createFakePost } from "../fixtures/post";
 import {
   setPosts,
   addPost,

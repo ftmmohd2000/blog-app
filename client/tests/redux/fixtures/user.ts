@@ -1,5 +1,5 @@
 import faker from "faker";
-import { IUserData } from "../../redux/types";
+import { IUserData } from "../../../redux/types";
 
 export const createFakeUser = () => {
   const user: IUserData = {
