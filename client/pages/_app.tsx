@@ -3,7 +3,7 @@ import React, { ComponentType } from "react";
 import { Provider } from "react-redux";
 import { getStore } from "../redux/store";
 import { ApolloProvider } from "@apollo/client";
-import { client } from "../apollo/client";
+import { client } from "../gql/client";
 
 const store = getStore();
 

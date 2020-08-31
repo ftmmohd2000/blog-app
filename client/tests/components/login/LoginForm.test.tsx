@@ -11,12 +11,10 @@ import {
   loadingSignElement,
   passwordInputElement,
   submitButtonElement
-} from "./constants";
+} from "../shared/constants";
 import { loginEmail, loginPassword, mocks } from "./fixtures/loginQueries";
 
 let wrapper: RenderResult;
-
-jest.mock("");
 
 beforeEach(() => {
   wrapper = render(

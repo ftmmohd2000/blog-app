@@ -1,8 +1,17 @@
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import React, { FormEvent, useEffect, useState, ChangeEvent } from "react";
-import { SIGNUP_MUTATION, LOGIN_MUTATION } from "../../apollo/mutations";
+import { SIGNUP_MUTATION, LOGIN_MUTATION } from "../../gql/mutations";
 import { success } from "../../redux/constants";
+import {
+  loadingSignElement,
+  errorMessageElement,
+  passwordInputElement,
+  emailInputElement,
+  firstNameInputElement,
+  lastNameInputElement,
+  submitButtonElement
+} from "../../tests/components/shared/constants";
 
 const SignupForm = () => {
   const router = useRouter();
@@ -64,6 +73,7 @@ const SignupForm = () => {
         name="firstName"
         value={firstName}
         onChange={handleFirstNameChange}
+        data-testid={firstNameInputElement}
       />
       <label about="lastName">Last Name:</label>
       <input
@@ -71,6 +81,7 @@ const SignupForm = () => {
         name="lastName"
         value={lastName}
         onChange={handleLastNameChange}
+        data-testid={lastNameInputElement}
       />
       <label about="email">Email:</label>
       <input
@@ -78,6 +89,7 @@ const SignupForm = () => {
         name="email"
         value={email}
         onChange={handleEmailChange}
+        data-testid={emailInputElement}
       />
       <label about="password">Password:</label>
       <input
@@ -85,10 +97,13 @@ const SignupForm = () => {
         name="password"
         value={password}
         onChange={handlePasswordChange}
+        data-testid={passwordInputElement}
       />
-      <button>Sign Up</button>
-      {loading && <p>loading...</p>}
-      <div>{errorMessage}</div>
+      <button data-testid={submitButtonElement}>Sign Up</button>
+      {loading && <p data-testid={loadingSignElement}>loading...</p>}
+      {errorMessage && (
+        <div data-testid={errorMessageElement}>{errorMessage}</div>
+      )}
     </form>
   );
 };

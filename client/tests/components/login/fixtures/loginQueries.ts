@@ -1,6 +1,6 @@
 import { MockedResponse } from "@apollo/client/testing";
-import { LOGIN_MUTATION } from "../../../../apollo/mutations";
-import { success } from "../../../../components/login/LoginForm";
+import { LOGIN_MUTATION } from "../../../../gql/mutations";
+import { success } from "../../../../redux/constants";
 
 export const loginEmail = "someEmail@someDomain.com";
 export const loginPassword = "somePasswd";

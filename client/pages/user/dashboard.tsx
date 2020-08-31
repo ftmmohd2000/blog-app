@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { loginAction } from "../../redux/actions/user";
-import { ME_QUERY } from "../../apollo/queries";
+import { ME_QUERY } from "../../gql/queries";
 
 const dashboard = () => {
   const { data, loading, error } = useQuery(ME_QUERY);
