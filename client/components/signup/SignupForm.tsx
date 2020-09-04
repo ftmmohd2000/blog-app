@@ -30,6 +30,7 @@ const SignupForm = () => {
   useEffect(() => {
     if (called) {
       if (error) {
+        console.log(error.message);
         setErrorMessage(error.message);
       } else if (data) {
         if (data.register === success) {

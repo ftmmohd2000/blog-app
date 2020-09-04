@@ -47,6 +47,5 @@ test("should upvote and downvote post", async (done) => {
   const response4 = await client.vote(postId);
 
   expect(response4.data.vote).toBe(1);
-
   done();
-});
+}, 10000);

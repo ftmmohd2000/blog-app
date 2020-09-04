@@ -22,6 +22,7 @@ export type IPostState = IPostData[];
 
 export type RootState = {
   user: IUserState;
+  posts: IPostState;
 };
 
 export interface IInitAction {

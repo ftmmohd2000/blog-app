@@ -1,5 +1,6 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import { userReducer } from "./reducers/user";
+import { postReducer } from "./reducers/post";
 
 const composeEnhancers =
   (typeof window !== "undefined" &&
@@ -8,6 +9,6 @@ const composeEnhancers =
 
 export const getStore = () =>
   createStore(
-    combineReducers({ user: userReducer }),
+    combineReducers({ user: userReducer, post: postReducer }),
     composeEnhancers(applyMiddleware())
   );
