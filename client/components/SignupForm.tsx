@@ -1,8 +1,8 @@
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import React, { FormEvent, useEffect, useState, ChangeEvent } from "react";
-import { SIGNUP_MUTATION, LOGIN_MUTATION } from "../../gql/mutations";
-import { success } from "../../redux/constants";
+import { SIGNUP_MUTATION, LOGIN_MUTATION } from "../gql/mutations";
+import { success } from "../redux/constants";
 import {
   loadingSignElement,
   errorMessageElement,
@@ -11,7 +11,7 @@ import {
   firstNameInputElement,
   lastNameInputElement,
   submitButtonElement
-} from "../../tests/components/shared/constants";
+} from "../tests/components/shared/constants";
 
 const SignupForm = () => {
   const router = useRouter();

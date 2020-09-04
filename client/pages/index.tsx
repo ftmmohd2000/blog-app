@@ -1,10 +1,10 @@
 import React from "react";
-import { Layout } from "../components/shared/Layout";
+import { Layout } from "../components/Layout";
 import Link from "next/link";
 
-const Home = () => {
+const IndexPage = () => {
   return (
-    <Layout pageTitle="bruh">
+    <Layout pageTitle="Welcome">
       <p>Hello User</p>
       <Link href="./login">
         <a>Login</a>
@@ -13,4 +13,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default IndexPage;

@@ -1,7 +1,7 @@
 import { MockedProvider } from "@apollo/client/testing";
 import { fireEvent, render, RenderResult } from "@testing-library/react";
 import React from "react";
-import SignupForm from "../../../components/signup/SignupForm";
+import SignupForm from "../../../components/SignupForm";
 import { withTestRouter } from "../../utils/withTestRouter";
 import {
   emailInputElement,

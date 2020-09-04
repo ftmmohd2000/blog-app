@@ -10,7 +10,7 @@ interface ILayoutProps {
 
 export const Layout = ({ children, pageTitle }: ILayoutProps) => {
   return (
-    <div className="container">
+    <div>
       <Header title={pageTitle} />
       <Head>
         <title>{pageTitle}</title>

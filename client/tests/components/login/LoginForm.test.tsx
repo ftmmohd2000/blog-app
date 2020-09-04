@@ -2,7 +2,7 @@ import { MockedProvider } from "@apollo/client/testing";
 import { fireEvent, render, RenderResult } from "@testing-library/react";
 import React from "react";
 import { act } from "react-dom/test-utils";
-import LoginForm from "../../../components/login/LoginForm";
+import LoginForm from "../../../components/LoginForm";
 import { delay } from "../../utils/delay";
 import { withTestRouter } from "../../utils/withTestRouter";
 import {

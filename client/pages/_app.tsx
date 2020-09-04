@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.css";
 import React, { ComponentType } from "react";
 import { Provider } from "react-redux";
 import { getStore } from "../redux/store";
@@ -7,14 +6,15 @@ import { client } from "../gql/client";
 
 const store = getStore();
 
-export interface IAppProps {
+const MyApp = ({
+  Component,
+  pageProps
+}: {
   Component: ComponentType;
   pageProps: any;
-}
-
-const MyApp = ({ Component, pageProps }: IAppProps) => {
+}) => {
   return (
-    <div className="bg-danger">
+    <div>
       <ApolloProvider client={client}>
         <Provider store={store}>
           <Component {...pageProps} />

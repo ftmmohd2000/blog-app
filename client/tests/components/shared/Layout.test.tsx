@@ -1,6 +1,6 @@
 import React from "react";
 import { render, RenderResult } from "@testing-library/react";
-import { Layout } from "../../../components/shared/Layout";
+import { Layout } from "../../../components/Layout";
 
 let wrapper: RenderResult;
 let title: string;

@@ -1,7 +1,12 @@
-import SignupForm from "../components/signup/SignupForm";
+import SignupForm from "../components/SignupForm";
+import { Layout } from "../components/Layout";
 
-const signup = () => {
-  return <SignupForm />;
+const SignupPage = () => {
+  return (
+    <Layout pageTitle="Signup">
+      <SignupForm />
+    </Layout>
+  );
 };
 
-export default signup;
+export default SignupPage;

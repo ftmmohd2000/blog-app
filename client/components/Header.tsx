@@ -6,7 +6,7 @@ interface IHeaderProps {
 
 export const Header = ({ title }: IHeaderProps) => {
   return (
-    <div className="jumbotron">
+    <div>
       <h1>Blog app</h1>
       <h2>{title}</h2>
     </div>

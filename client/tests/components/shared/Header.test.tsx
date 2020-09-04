@@ -1,6 +1,6 @@
 import React from "react";
 import { render, RenderResult } from "@testing-library/react";
-import { Header } from "../../../components/shared/Header";
+import { Header } from "../../../components/Header";
 
 let wrapper: RenderResult;
 let title: string;
