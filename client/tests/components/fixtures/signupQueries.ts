@@ -1,6 +1,6 @@
 import { MockedResponse } from "@apollo/client/testing";
-import { SIGNUP_MUTATION } from "../../../../gql/mutations";
-import { success } from "../../../../redux/constants";
+import { SIGNUP_MUTATION } from "../../../gql/mutations";
+import { success } from "../../../redux/constants";
 
 export const signupEmail = "someEmail@someDomain.com";
 export const signupPassword = "somePasswd";

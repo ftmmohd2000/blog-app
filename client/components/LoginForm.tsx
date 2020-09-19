@@ -8,7 +8,7 @@ import {
   errorMessageElement,
   submitButtonElement,
   loadingSignElement
-} from "../tests/components/shared/constants";
+} from "../tests/components/constants";
 import { success } from "../redux/constants";
 
 const LoginForm = () => {

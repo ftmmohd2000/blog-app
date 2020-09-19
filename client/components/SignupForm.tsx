@@ -11,7 +11,7 @@ import {
   firstNameInputElement,
   lastNameInputElement,
   submitButtonElement
-} from "../tests/components/shared/constants";
+} from "../tests/components/constants";
 
 const SignupForm = () => {
   const router = useRouter();

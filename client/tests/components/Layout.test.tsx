@@ -1,15 +1,19 @@
 import React from "react";
 import { render, RenderResult } from "@testing-library/react";
-import { Header } from "../../../components/Header";
+import { Layout } from "../../components/Layout";
 
 let wrapper: RenderResult;
 let title: string;
 
 beforeEach(() => {
   title = "Some Title";
-  wrapper = render(<Header title={title} />);
+  wrapper = render(
+    <Layout pageTitle={title}>
+      <p>content here</p>
+    </Layout>
+  );
 });
 
-test("should render Header correctly", () => {
+test("should render Layout correctly", () => {
   expect(wrapper).toMatchSnapshot();
 });

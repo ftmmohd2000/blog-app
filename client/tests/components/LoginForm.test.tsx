@@ -2,16 +2,16 @@ import { MockedProvider } from "@apollo/client/testing";
 import { fireEvent, render, RenderResult } from "@testing-library/react";
 import React from "react";
 import { act } from "react-dom/test-utils";
-import LoginForm from "../../../components/LoginForm";
-import { delay } from "../../utils/delay";
-import { withTestRouter } from "../../utils/withTestRouter";
+import LoginForm from "../../components/LoginForm";
+import { delay } from "../test-utils/delay";
+import { withTestRouter } from "../test-utils/withTestRouter";
 import {
   emailInputElement,
   errorMessageElement,
   loadingSignElement,
   passwordInputElement,
   submitButtonElement
-} from "../shared/constants";
+} from "./constants";
 import { loginEmail, loginPassword, mocks } from "./fixtures/loginQueries";
 
 let wrapper: RenderResult;

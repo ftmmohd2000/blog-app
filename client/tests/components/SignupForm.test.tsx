@@ -1,8 +1,8 @@
 import { MockedProvider } from "@apollo/client/testing";
 import { fireEvent, render, RenderResult } from "@testing-library/react";
 import React from "react";
-import SignupForm from "../../../components/SignupForm";
-import { withTestRouter } from "../../utils/withTestRouter";
+import SignupForm from "../../components/SignupForm";
+import { withTestRouter } from "../test-utils/withTestRouter";
 import {
   emailInputElement,
   firstNameInputElement,
@@ -11,7 +11,7 @@ import {
   submitButtonElement,
   loadingSignElement,
   errorMessageElement
-} from "../shared/constants";
+} from "./constants";
 import {
   mocks,
   signupFirstName,
@@ -20,7 +20,7 @@ import {
   signupPassword
 } from "./fixtures/signupQueries";
 import { act } from "react-dom/test-utils";
-import { delay } from "../../utils/delay";
+import { delay } from "../test-utils/delay";
 
 let wrapper: RenderResult;
 

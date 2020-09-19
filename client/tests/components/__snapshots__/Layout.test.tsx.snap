@@ -1,13 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render Header correctly 1`] = `
+exports[`should render Layout correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div
-        class="jumbotron"
-      >
+      <div>
+        <div>
+          <h1>
+            Blog app
+          </h1>
+          <h2>
+            Some Title
+          </h2>
+        </div>
+        <p>
+          content here
+        </p>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div>
+      <div>
         <h1>
           Blog app
         </h1>
@@ -15,18 +30,9 @@ Object {
           Some Title
         </h2>
       </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="jumbotron"
-    >
-      <h1>
-        Blog app
-      </h1>
-      <h2>
-        Some Title
-      </h2>
+      <p>
+        content here
+      </p>
     </div>
   </div>,
   "debug": [Function],
